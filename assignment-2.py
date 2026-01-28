@@ -12,8 +12,10 @@ def show_menu():
     print("6. Exit")
 
 
-def add_book():
-    pass
+def add_book(library: list[str] = []):
+    title = input("Enter the title of the book: ").strip()
+    library.append(title)
+    print(f"Added: {title}")
 
 def remove_book():
     pass
@@ -25,15 +27,19 @@ def main():
     """
     Main function that loops the menu options
     """
+
+    library: list[str] = [] # initialized to be empty
+
+
     while True:
         show_menu()
         choice = input("Choose an option: ").strip()
 
-        if choice == 1:
-            add_book()
-        elif choice == 2:
+        if choice == "1":
+            add_book(library)
+        elif choice == "2":
             remove_book()
-        elif choice == 3:
+        elif choice == "3":
             update_book()
 
 
