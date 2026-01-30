@@ -27,9 +27,22 @@ def add_book():
 
     # add it to the large library
     library.append(book)
+    print(library) # testing
 
 def remove_book():
-    pass
+    # ask the user for what book to remove
+    book_to_remove = input("Please enter the title of the book to remove: ").strip()
+    # search through each book in the library
+    for book in library:
+        if book["title"].lower() == book_to_remove.lower():
+            library.remove(book)
+            print(f"Removed: {book_to_remove}")
+            print(library) # testing
+            # exits the function if a match is found
+            return
+    # if no match is found, print an error
+    print("Book not found")
+        
 
 def update_book():
     pass
