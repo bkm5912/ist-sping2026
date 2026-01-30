@@ -1,3 +1,6 @@
+# define the large library as a list
+library = []
+
 def show_menu():
     """
     Display the main menu options to the user
@@ -12,10 +15,18 @@ def show_menu():
     print("6. Exit")
 
 
-def add_book(library: list[str] = []):
+def add_book():
+    # ask the user for some info
     title = input("Enter the title of the book: ").strip()
-    library.append(title)
+    author = input("Enter the author's name: ").strip()
+    year_published = input("Enter the year the book was published: ").strip()
     print(f"Added: {title}")
+
+    # create the dictionary for a single book
+    book = {"title": title, "author": author, "year_published": year_published}
+
+    # add it to the large library
+    library.append(book)
 
 def remove_book():
     pass
@@ -28,7 +39,7 @@ def main():
     Main function that loops the menu options
     """
 
-    library: list[str] = [] # initialized to be empty
+    
 
 
     while True:
@@ -36,7 +47,7 @@ def main():
         choice = input("Choose an option: ").strip()
 
         if choice == "1":
-            add_book(library)
+            add_book()
         elif choice == "2":
             remove_book()
         elif choice == "3":
