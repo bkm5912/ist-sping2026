@@ -17,7 +17,7 @@ def show_menu():
 
 def add_book():
     # ask the user for some info
-    title = input("Enter the title of the book: ").strip()
+    title = input("\nEnter the title of the book: ").strip()
     author = input("Enter the author's name: ").strip()
     year_published = input("Enter the year the book was published: ").strip()
     print(f"Added: {title}")
@@ -31,7 +31,7 @@ def add_book():
 
 def remove_book():
     # ask the user for what book to remove
-    book_to_remove = input("Please enter the title of the book to remove: ").strip()
+    book_to_remove = input("Enter the title of the book to remove: ").strip()
     # search through each book in the library
     for book in library:
         if book["title"].lower() == book_to_remove.lower():
@@ -45,7 +45,25 @@ def remove_book():
         
 
 def update_book():
-    pass
+    book_to_update = input("\nEnter the name of the book to update: ").strip()
+    for book in library:
+        if book["title"].lower() == book_to_update.lower():
+            print("1. Title")
+            print("2. Author")
+            print("3. Publication Date")
+            choice = input("\nWhat do you want to update? ").strip()
+            if choice == "1":
+                book["title"] = input("Enter the new title: ")
+                print(library) # testing
+            elif choice == "2":
+                book["author"] = input("Enter the new author: ")
+                print(library) # testing
+            elif choice == "3":
+                book["year_published"] = input("Enter the new publication date: ")
+                print(library) # testing
+                return
+    print("Book not found")
+        
 
 def main():
     """
@@ -57,7 +75,7 @@ def main():
 
     while True:
         show_menu()
-        choice = input("Choose an option: ").strip()
+        choice = input("\nChoose an option: ").strip()
 
         if choice == "1":
             add_book()
