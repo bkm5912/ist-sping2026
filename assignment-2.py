@@ -63,15 +63,23 @@ def update_book():
                 print(library) # testing
             return
     print("Book not found")
+
+
+def list_all_books():
+    count = 0
+    print("Here are all the books in your library:")
+    for book in library:
+        count += 1
+        print(f"{count}. {book["title"]}")
         
+
+
+
 
 def main():
     """
     Main function that loops the menu options
     """
-
-    
-
 
     while True:
         show_menu()
@@ -83,6 +91,8 @@ def main():
             remove_book()
         elif choice == "3":
             update_book()
+        elif choice == "4":
+            list_all_books()
 
 
         elif choice == 6:
@@ -90,11 +100,6 @@ def main():
             break
         else:
             print("Invalid option. Try again.")
-
-
-
-
-
 
 
 if __name__ == "__main__":
