@@ -61,7 +61,7 @@ def update_book():
             elif choice == "3":
                 book["year_published"] = input("Enter the new publication date: ")
                 print(library) # testing
-                return
+            return
     print("Book not found")
         
 
