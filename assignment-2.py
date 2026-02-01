@@ -29,6 +29,7 @@ def add_book():
     library.append(book)
     print(library) # testing
 
+
 def remove_book():
     # ask the user for what book to remove
     book_to_remove = input("Enter the title of the book to remove: ").strip()
@@ -42,12 +43,13 @@ def remove_book():
             return
     # if no match is found, print an error
     print("Book not found")
-        
+
 
 def update_book():
-    book_to_update = input("\nEnter the name of the book to update: ").strip()
+    # must be case insensitive, so make it lowercase
+    book_to_update = input("\nEnter the name of the book to update: ").lower().strip()
     for book in library:
-        if book["title"].lower() == book_to_update.lower():
+        if book["title"].lower() == book_to_update:
             print("1. Title")
             print("2. Author")
             print("3. Publication Date")
@@ -71,6 +73,17 @@ def list_all_books():
     for book in library:
         count += 1
         print(f"{count}. {book["title"]}")
+
+
+def search():
+    # must be case insensitive
+    search = input("What book would you like to search for? ").lower().strip()
+    for book in library:
+        # partial matches, so I use "in" and not == like I did for updating a book
+        if search in book["title"].lower():
+            print(f"Here's what was found: {book["title"]} by {book["author"]}, published in {book["year_published"]}")
+            return
+    print("No matches found")
         
 
 
@@ -93,6 +106,8 @@ def main():
             update_book()
         elif choice == "4":
             list_all_books()
+        elif choice == "5":
+            search()
 
 
         elif choice == 6:
