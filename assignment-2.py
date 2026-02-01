@@ -12,7 +12,8 @@ def show_menu():
     print("3. Update a book")
     print("4. List all books")
     print("5. Search for a book")
-    print("6. Exit")
+    print("6. Show stats")
+    print("7. Exit")
 
 
 def add_book():
@@ -84,9 +85,10 @@ def search():
             print(f"Here's what was found: {book["title"]} by {book["author"]}, published in {book["year_published"]}")
             return
     print("No matches found")
-        
 
 
+def show_stats():
+    pass
 
 
 def main():
@@ -108,9 +110,9 @@ def main():
             list_all_books()
         elif choice == "5":
             search()
-
-
-        elif choice == 6:
+        elif choice == "6":
+            show_stats()
+        elif choice == "7":
             print("Goodbye!")
             break
         else:
