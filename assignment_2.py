@@ -21,14 +21,19 @@ def add_book():
     title = input("\nEnter the title of the book: ").strip()
     author = input("Enter the author's name: ").strip()
     year_published = input("Enter the year the book was published: ").strip()
-    print(f"Added: {title}")
 
     # create the dictionary for a single book
-    book = {"title": title, "author": author, "year_published": year_published}
-
+    new_book = {"title": title, "author": author, "year_published": year_published}
+    
+    # check whether book already exists
+    for book in library:
+        if book["title"] == title:
+            print("Book already exists")
+            return
     # add it to the large library
-    library.append(book)
-    print(library) # testing
+    library.append(new_book)
+    print(f"Added: {title}")
+    # print(library) # testing
 
 
 def remove_book():
@@ -39,7 +44,7 @@ def remove_book():
         if book["title"].lower() == book_to_remove.lower():
             library.remove(book)
             print(f"Removed: {book_to_remove}")
-            print(library) # testing
+            # print(library) # testing
             # exits the function if a match is found
             return
     # if no match is found, print an error
@@ -57,13 +62,13 @@ def update_book():
             choice = input("\nWhat do you want to update? ").strip()
             if choice == "1":
                 book["title"] = input("Enter the new title: ")
-                print(library) # testing
+                # print(library) # testing
             elif choice == "2":
                 book["author"] = input("Enter the new author: ")
-                print(library) # testing
+                # print(library) # testing
             elif choice == "3":
                 book["year_published"] = input("Enter the new publication date: ")
-                print(library) # testing
+                # print(library) # testing
             return
     print("Book not found")
 
