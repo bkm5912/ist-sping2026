@@ -21,9 +21,13 @@ class TestPersonalLibrary(unittest.TestCase):
     # Test case for add book function
     def test_add_book_normal_case(self):
         library = []
-        with patch("builtins.input", return_value = "Dungeon Crawler Carl"):
-            add_book(library)
-        self.assertEqual(library, ["Dungeon Crawler Carl"])
+        with patch("builtins.input", return_value = ["Dungeon Crawler Carl",
+                                                      "Matt Dinniman",
+                                                      "2020"]):
+            add_book()
+        self.assertEqual(library, [{"title" : "Dungeon Crawler Carl",
+                                    "author" : "Matt Dinniman",
+                                    "year_published" : "2020"}])
 
 
 if __name__ == "__main__":
